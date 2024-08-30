@@ -9,3 +9,24 @@ THIS IS TO TEST YOUR SKILLS TO MEET OUR APP DEVELOPMENT REQUIREMENTS
 
 HAPPY CODING! </br>
 A Round Entertainment
+
+
+# Instructions For Deploying Frontend and Backend
+
+1. Clone Repository onto local machine
+
+## Back End
+1. Open up a new terminal on your IDE
+2. Enter the StarterCode directory by typing `cd StarterCode`.
+3. Then enter the backend directory by typing `cd backend`.
+4. Once in the backend directory, make sure you have all libraries by typing in `npm ci` to do a clean instalation of the libraries
+5. Type `npm start` to start the react app, which should start the server running on PORT 5000.
+
+## Front End
+1. Open up a new terminal on your IDE
+2. Enter the StarterCode directory by typing `cd StarterCode`.
+3. Then enter the frontend directory by typing `cd frontend`.
+4. Once in the frontend directory, make sure you have all libraries by typing in `npm ci` to do a clean instalation of the libraries
+5. Type `npm start` to start the react app, which should open a new site on your browser.
+
+Everything should be working! Enjoy!

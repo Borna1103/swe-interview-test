@@ -13,17 +13,14 @@ const ProductList = () => {
    * Fetches all products
    */
   const fetchProducts = async () => {
-    try{
-      const products = await axios({
-        method: 'GET',
-        url: '/products'
-      });
-
-      setProducts(products.data)
-    } catch (error) {
+    const products = await axios({
+      method: 'GET',
+      url: '/products'
+    }).catch(function (error) {
       console.error('Error fetching products: ', error);
-      return [];
-    }
+    });
+
+    setProducts(products.data)
   };
   
   useEffect(() => {
@@ -34,25 +31,20 @@ const ProductList = () => {
    * Handles deletion of single product
    */
   const handleDelete = async (id) => {
-    try{
-      const productId = id.toString();
-      const product = await axios({
-        method: 'DELETE',
-        url: `products/${productId}`,
-      });
-
-      setProducts(products.filter((product) => product.id !== id));   // Remove product on frontend
-    } catch (error) {
+    await axios({
+      method: 'DELETE',
+      url: `products/${id}`,
+    }).catch(function (error) {
       console.error('Error deleting products: ', error);
-      return [];
-    }
+    });
+    setProducts(products.filter((product) => product.id !== id));   // Remove product on frontend
   };
   
   
   return (
-    <Container sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', display: 'grid', rowGap: 3, columnGap: 0, gridTemplateColumns: 'repeat(3, 1fr)' }}>
+    <Container sx={{ display: 'grid', rowGap: 3, columnGap: 0, gridTemplateColumns: 'repeat(3, 1fr)' }}>
       {products.map((product) => (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 350 }}>
           {/* Delete Button */}
           <IconButton sx={{ position: 'absolute' }} aria-label="delete" color='error' onClick={() => {
             handleDelete(product.id);
@@ -70,7 +62,7 @@ const ProductList = () => {
           {/* Card Information */}
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {product.name}
+              <b>{product.name}</b>
             </Typography>
             <Typography>
               ${product.price}
